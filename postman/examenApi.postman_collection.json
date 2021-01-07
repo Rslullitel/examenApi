@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "c7f8cd31-4b64-4dfd-bb45-23a8043db893",
+		"name": "examenApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/users/login?username=rama",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"users",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "rama"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getLatLongByProvinciaName",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/provincias/getByName?nombre=mendoza",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"provincias",
+						"getByName"
+					],
+					"query": [
+						{
+							"key": "nombre",
+							"value": "mendoza"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
