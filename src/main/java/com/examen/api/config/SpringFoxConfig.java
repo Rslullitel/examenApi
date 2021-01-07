@@ -15,17 +15,7 @@ import java.time.LocalTime;
 @Configuration
 @EnableSwagger2
 public class SpringFoxConfig {
-    /*@Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .directModelSubstitute(LocalDate.class, String.class)
-                .directModelSubstitute(LocalTime.class, String.class)
-                .select()
-                .apis(RequestHandlerSelectors.withClassAnnotation(RestController.class))
-                .paths(PathSelectors.any())
-                .build();
-    }*/
-
+    
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).select().apis(RequestHandlerSelectors.any()).paths(PathSelectors.any()).build();
