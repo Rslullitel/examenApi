@@ -2,7 +2,6 @@ package com.examen.api.controller;
 
 import com.examen.api.repository.UserRepository;
 import com.examen.api.service.ProvinciasService;
-import com.examen.api.service.UserService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
