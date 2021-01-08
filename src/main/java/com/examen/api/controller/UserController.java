@@ -1,7 +1,6 @@
 package com.examen.api.controller;
 
 import com.examen.api.model.User;
-import com.examen.api.model.dto.UserDTO;
 import com.examen.api.service.UserService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -27,7 +26,7 @@ public class UserController {
     @Autowired
     private ModelMapper mapper;
 
-    @PostMapping(LOGIN_PATH)
+    @PostMapping(value = LOGIN_PATH)
     public ResponseEntity<String> login(@RequestParam String username) {
         logger.debug("GET request getUser: {}", username);
         return new ResponseEntity<>(userService.login(username), HttpStatus.OK);
