@@ -19,15 +19,6 @@ public class ApiApplication {
 		return new RestTemplate();
 	}
 
-	/*@Bean
-	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-		return args -> {
-			Provincia provincia = restTemplate.getForObject(
-					"https://apis.datos.gob.ar/georef/api/provincias?nombre=?cordoba", Provincia.class);
-			log.info(provincia.getCentroide().toString());
-		};
-	}*/
-
 	public static void main(String[] args) {
 		SpringApplication.run(ApiApplication.class, args);
 	}

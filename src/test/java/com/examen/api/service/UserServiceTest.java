@@ -53,7 +53,7 @@ public class UserServiceTest {
         assertThatThrownBy(() -> service.login(username))
                 .isInstanceOf(ResponseStatusException.class)
                 .hasMessageContaining("User not found");
-        
+
     }
 
 }

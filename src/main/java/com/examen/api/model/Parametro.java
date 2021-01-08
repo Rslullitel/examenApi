@@ -8,4 +8,10 @@ public class Parametro {
 
     @JsonProperty("nombre")
     private String nombre;
+
+    public Parametro() {}
+
+    public Parametro(String nombre){
+        this.nombre = nombre;
+    }
 }

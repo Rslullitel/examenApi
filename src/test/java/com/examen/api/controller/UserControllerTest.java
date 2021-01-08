@@ -7,8 +7,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -31,23 +33,17 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("integration")
 public class UserControllerTest {
 
     @Autowired
     private UserRepository userRepository;
 
-    @Mock
+    @Autowired
     private UserService userService;
 
     @Autowired
-    private TestRestTemplate restTemplate;
-
-    @Autowired
-    private MockMvc mvc;
-
-    @Autowired
     private WebApplicationContext webApplicationContext;
+    private MockMvc mvc;
 
     @BeforeEach
     private void setUp() {
@@ -57,22 +53,22 @@ public class UserControllerTest {
 
     @Test
     public void shouldLogin_AndReturn_StatusOk() throws Exception {
-        String uri = USERS_PATH + LOGIN_PATH;
-        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
+        String uri = USERS_PATH + LOGIN_PATH + "?username=rama";
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
-        /*String content = mvcResult.getResponse().getContentAsString();
-        User user = super.mapFromJson(content, User.class);
-        assertTrue(user != null);*/
-        /*restTemplate.postForEntity(USERS_PATH + LOGIN_PATH, "rama", Object.class);
+    }
 
-        ResponseEntity<String> usernameEntity =
-                restTemplate.getForEntity(
-                        USERS_PATH + LOGIN_PATH + "?username=" + "rama", String.class);
+    @Test
+    public void shouldLogin_AndExpected_404_NOT_FOUNT() throws Exception {
+        String uri = USERS_PATH + LOGIN_PATH + "?username=rama1";
+        MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.post(uri)
+                .accept(MediaType.APPLICATION_JSON_VALUE)).andReturn();
 
-        assertThat(usernameEntity.getStatusCode()).isEqualTo(HttpStatus.OK);*/
+        int status = mvcResult.getResponse().getStatus();
+        assertEquals(404, status);
     }
 
 }
